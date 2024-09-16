@@ -24,6 +24,7 @@ export default {
       let day = date.getDate();
       let dayWeek = days[Number(date.getDay())];
       return day + " " + month + ", " + dayWeek;
+			
     },
 	}
 }
