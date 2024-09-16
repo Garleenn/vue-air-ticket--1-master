@@ -737,11 +737,11 @@ export default {
 										<button v-if='!hotel.showAllPluses' @click='hotel.showAllPluses = !hotel.showAllPluses'>Все услуги и удобства</button>
 										<button v-else @click='hotel.showAllPluses = !hotel.showAllPluses'>Скрыть услуги и удобства</button>
 									</div>
-									<div :class='{"price-card-end": !this.showFakeMap}' class="price-block d-flex flex-column align-items-end">
+									<div :class='{"price-card-end": !this.showFakeMap, "bg-price": hotel.isFullDesk}' class="price-block d-flex flex-column align-items-end">
 										<h4 class='mb-0'><b>{{ hotel.price.toString().split(/(\d{3})/).join(' ').trim() }},00 <span v-if='!this.showFakeMap'>баллов</span> </b></h4>
 										<span>За 1 ночь</span>
-										<button @click='this.hotels[index].isFullDesk = !this.hotels[index].isFullDesk' v-if='!this.showFakeMap && !this.hotels[index].isFullDesk' class='find-btn w-100'>Подробнее</button>
-										<button @click='this.hotels[index].isFullDesk = !this.hotels[index].isFullDesk' v-if='!this.showFakeMap && this.hotels[index].isFullDesk' class='find-btn w-100'>Выбрать</button>
+										<button @click='hotel.isFullDesk = !hotel.isFullDesk' v-if='!this.showFakeMap && !this.hotels[index].isFullDesk' class='find-btn w-100'>Подробнее</button>
+										<button @click='hotel.isFullDesk = false' v-if='!this.showFakeMap && hotel.isFullDesk' class='find-btn w-100 ozo'>Выбрать</button>
 									</div>
 								</div>
 							</div>
@@ -775,6 +775,22 @@ export default {
 </template>
 
 <style scoped>
+.bg-price {
+	text-align: end !important;
+	background: #FBFBFB !important;
+	padding: 20px;
+	display: flex;
+	justify-content: end !important;
+	/* z-index: -1; */
+	height: 100%;
+	bottom: 0 !important;
+	right: 0 !important;
+}
+
+.ozo {
+	z-index: 10 !important;
+}
+
 .show-not-map {
 	position: relative;
 	display: flex;
@@ -1273,6 +1289,7 @@ input[type="checkbox"]:checked + label {
 	position: absolute;
 	top: 15px;
 	right: 15px;
+	z-index: 2;
 }
 
 .full-hotel-card span u {
