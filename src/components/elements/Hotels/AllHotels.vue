@@ -1283,7 +1283,7 @@ input[type="checkbox"]:checked + label {
 	padding-right: 230px !important;
 	padding-top: 10px !important;
 	padding-bottom: 60px !important;
-}
+} 
 
 .top-right-rating {
 	position: absolute;
